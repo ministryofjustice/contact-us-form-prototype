@@ -1,44 +1,26 @@
-# GOV.UK Prototype kit
+# Contact Us Form Prototype
 
-## News
+## Background
 
-**Upgrading from version 1 to 2:** the latest version of the kit (2.0.0 and later) is not compatible with previous versions. If you update your old prototypes you'll need to [convert them as well](https://github.com/alphagov/govuk_prototype_kit/blob/master/docs/updating-the-kit.md).
+As part of the email triage/handling project, we're looking at improving the front-end user experience when they get in touch with us by directing them to appropriate GOV.UK resources when they submit an enquiry rather than them getting in touch with us and having to wait for us to point them in the right direction. 
 
-## About the prototype kit
+## About the prototype
 
-The prototype kit provides a simple way to make interactive prototypes that look like pages on GOV.UK. These prototypes can be used to show ideas to people you work with, and to do user research.
+The prototype demonstrates a three stage submission process 
 
-Read the [project principles](docs/principles.md).
+1. Enter enquiry
+2. Review suggested content and/or submit enquiry
+3. Confirmation page
 
-## Security
+## 
 
-If you publish your prototypes online, they **must** be protected by a [username and password](docs/guides/publishing-on-heroku.md). This is to prevent members of the public finding prototypes and thinking they are real services.
+Functionality
 
-You must protect user privacy at all times, even when using prototypes. Prototypes made with the kit look like GOV.UK, but do not have the same security provisions. Always make sure you are handling user data appropriately. 
+The prototype will walk people through the process, however, the API look up needed to serve content does not exist in the prototype. Search responses are hard-coded for particular key words.
 
-## Installation instructions
+These include:
 
-- [Installation guide for new users (non technical)](docs/install/introduction.md)
-- [Installation guide for developers (technical)](docs/developer-install-instructions.md)
+var health = ["health", "medicine", "medicines", "doctor"]
+var passport = ["passport", "lost", "renew", "Passport"]
+var lifestyle = ["lifestyle", "cost", "sunshine"]
 
-## Guides
-
-1. [Setting up git](docs/guides/setting-up-git.md)
-2. [Publishing on the web (Heroku)](docs/guides/publishing-on-heroku.md)
-3. [Using GOV.UK Verify](docs/guides/using-verify.md)
-
-## Other documentation
-
-- [Prototype kit principles](docs/principles.md)
-- [Making pages](docs/making-pages.md)
-- [Writing CSS](docs/writing-css.md)
-- [Updating the kit to the latest version](docs/updating-the-kit.md)
-- [Tips and tricks](docs/tips-and-tricks.md)
-- [Creating routes (server-side programming)](docs/creating-routes.md)
-
-## Community
-
-We have two Slack channels for the Prototype kit. You'll need a government email address to join them.
-
-* [Slack channel for users of the prototype kit](https://ukgovernmentdigital.slack.com/messages/prototype-kit/)
-* [Slack channel for developers of the prototype kit](https://ukgovernmentdigital.slack.com/messages/prototype-kit-dev/)
