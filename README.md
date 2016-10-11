@@ -18,7 +18,7 @@ The prototype will walk people through the process, however, the API look up nee
 
 These include:
 
-var health = ["health", "medicine", "medicines", "doctor"]
-var passport = ["passport", "lost", "renew", "Passport"]
-var lifestyle = ["lifestyle", "cost", "sunshine"]
+health = ["health", "medicine", "medicines", "doctor"]
+passport = ["passport", "lost", "renew", "Passport"]
+lifestyle = ["lifestyle", "cost", "sunshine"]
 
