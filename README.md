@@ -12,9 +12,7 @@ The prototype demonstrates a three stage submission process
 2. Review suggested content and/or submit enquiry
 3. Confirmation page
 
-## 
-
-Functionality
+## Functionality
 
 The prototype will walk people through the process, however, the API look up needed to serve content does not exist in the prototype. Search responses are hard-coded for particular key words.
 
