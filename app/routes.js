@@ -8,61 +8,12 @@ router.get('/', function (req, res) {
 });
 
 
-// Example routes - feel free to delete these
-
-// Passing data into a page
-
-router.get('/examples/template-data', function (req, res) {
-
-  res.render('examples/template-data', { 'name' : 'Foo' });
-
-});
-
-// Branching
-
-router.get('/examples/over-18', function (req, res) {
-
-  // get the answer from the query string (eg. ?over18=false)
-  var over18 = req.query.over18;
-
-  if (over18 == "false"){
-
-    // redirect to the relevant page
-    res.redirect("/examples/under-18");
-
-  } else {
-
-    // if over18 is any other value (or is missing) render the page requested
-    res.render('examples/over-18');
-
-  }
-
-});
-
-// add your routes here
 
 // Making API call to Search API
 
-// router.get ('/copy-check-your-answers-page', function (req, res){
+// Synchronously get the url for the latest release on github and store
 
-// var title_display = new XMLHttpRequest();
-// title_display.open("GET", "https://www.gov.uk/api/search", false);
-// title_display.send();
- 
-// res.render ('copy-check-your-answers-page', {'title_display' : title_display })
 
-// })
- 
-// Passing data into a page, dynamic version
-// this is going from fullname (input name in form_post_data) -> fullname_form (captured as variable here) -> fullname_display (the variable in form_show_data html source)
-// router.get('/confirmation-page',function (req, res){
-
-// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it  
-
-// var contact_name_display = req.query.contactname
-// var contact_email_display = req.query.contactemail
-// var enquirytext_display = req.query.enquirytext
-// var country_display = req.query.Country
 
 // Branching
 
@@ -88,6 +39,7 @@ var results_lifestyle = [{firstname:"life", lastname:"style"}]
 var health = ["health", "medicine", "medicines", "doctor"]
 var passport = ["passport", "lost", "renew", "Passport"]
 var lifestyle = ["lifestyle", "cost", "sunshine"]
+var apiCall = require("./apiCall.js")
 
   if (country_display == "Italy")
   if (health.indexOf(enquirytext_display) > -1) {
@@ -117,7 +69,7 @@ var lifestyle = ["lifestyle", "cost", "sunshine"]
 } else {
 
     // if over18 is any other value (or is missing) render the page requested
-    res.render('copy-check-your-answers-page', {'country_display' : country_display,'contact_name_display' : contact_name_display, 'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display }) 
+    res.render('copy-check-your-answers-page', {'results_display' : apiCall.results_Display, 'country_display' : country_display}) 
 
   }
 
