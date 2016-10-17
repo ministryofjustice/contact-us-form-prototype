@@ -3,7 +3,12 @@ var router = express.Router();
 
 router.get('/', function (req, res) {
   
-  res.render('index');
+var testModule = require("./exportsTest.js");
+var greetingEnglish = testModule.sayHelloInEnglish
+var greetingSpanish = testModule.sayHelloInSpanish
+var apiCall = require("./apicall2.js");
+var link = apiCall.apiResults
+  res.render('index', {'display_english': greetingEnglish, 'display_spanish': greetingSpanish, 'display_link': link});
 
 });
 
@@ -39,7 +44,8 @@ var results_lifestyle = [{firstname:"life", lastname:"style"}]
 var health = ["health", "medicine", "medicines", "doctor"]
 var passport = ["passport", "lost", "renew", "Passport"]
 var lifestyle = ["lifestyle", "cost", "sunshine"]
-var apiCall = require("./apiCall.js")
+
+// var apiCall = require("./apiCall.js")
 
   if (country_display == "Italy")
   if (health.indexOf(enquirytext_display) > -1) {
@@ -69,7 +75,7 @@ var apiCall = require("./apiCall.js")
 } else {
 
     // if over18 is any other value (or is missing) render the page requested
-    res.render('copy-check-your-answers-page', {'results_display' : apiCall.results_Display, 'country_display' : country_display}) 
+    res.render('copy-check-your-answers-page', {'results_display' : contentTitle, 'country_display' : country_display}) 
 
   }
 

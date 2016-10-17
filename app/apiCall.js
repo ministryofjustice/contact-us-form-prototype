@@ -29,11 +29,11 @@ exports.getSearchResults = function () {
 
       console.log('Result is', contentTitle)
       // releaseUrl = zipUrl
-      results_Display = {'results_Title': contentTitle, 'results_Description' : contentDescription, 'results_Link' : contentLink}
+      results_Display = {'results_Title': contentTitle, 'results_Description' : contentDescription, 'results_Link' : contentLink }
     } catch (err) {
       results_Display = 'Call Failed'
       console.log("Couldn't retrieve search results")
     }
   }
-  return results_Display
+  return getSearchResults
 }
