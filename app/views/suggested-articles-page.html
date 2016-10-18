@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Check your answers
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <h1 class="heading-large">
+    Finding answers quickly
+  </h1>
+
+
+  <table>
+
+    <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            Suggested GOV.UK articles
+          </h2>
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          {{ results_display[0].title }}
+        </td>
+        <td>  
+          {{ results_display[0].description }}<br>
+        </td>
+        <td class="change-answer">
+          <a href="https://www.gov.uk{{results_display[0].link}}">
+            Preview <span class="visuallyhidden">Exporter name</span>
+          </a>
+        </td>
+      <td class="change-answer">
+          <a href="/reply-page?title={{ results_display[0].title }}&link={{results_display[0].link}}">
+            Send <span class="visuallyhidden">Exporter name</span>
+          </a>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          {{ results_display[1].title }}
+        </td>
+        <td>  
+          {{ results_display[1].description }}<br>
+        </td>
+        <td class="change-answer">
+          <a href="https://www.gov.uk{{results_display[1].link}}">
+            Preview <span class="visuallyhidden">Exporter name</span>
+          </a>
+        </td>
+      <td class="change-answer">
+          <a href="/reply-page?title={{ results_display[1].title }}&link={{results_display[1].link}}">
+            Send <span class="visuallyhidden">Exporter name</span>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          {{ results_display[2].title }}
+        </td>
+        <td>  
+          {{ results_display[2].description }}<br>
+        </td>
+        <td class="change-answer">
+          <a href="https://www.gov.uk{{results_display[2].link}}">
+            Preview <span class="visuallyhidden">Exporter name</span>
+          </a>
+        </td>
+      <td class="change-answer">
+          <a href="/reply-page?title={{ results_display[2].title }}&link={{results_display[2].link}}">
+            Send <span class="visuallyhidden">Exporter name</span>
+          </a>
+        </td>
+      </tr>
+
+
+
+
+    </tbody>
+  </table>
+
+
+  <form action="/reply-page2" method="get" class="form">
+
+    <h1 class="form-title heading-large">
+      Draft your reply
+    </h1>
+
+    
+ <fieldset>
+      <legend class="heading-medium">Reply</legend>
+      <div class="group">
+          <p class="warning-message">Don't include personal or financial information, eg your National Insurance number or credit card details.</p>
+
+
+        <label for="textdetails" class="visuallyhidden">Detail</label>
+        <textarea name="replytext" class="full-size counted" id="textdetails" required aria-required="true"></textarea>
+
+
+        <p id="textdetailscounter" class="hint" aria-live="polite" aria-atomic="false">(Limit is 1200 characters)</p>
+      </div>
+    </fieldset>
+
+    <div class="form-group">
+      <input type="submit" class="button" value="Next">
+    </div>
+
+  </form>
+
+
+
+</main>
+
+{% endblock %}

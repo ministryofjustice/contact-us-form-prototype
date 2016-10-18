@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Check your answers
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <h1 class="heading-large">
+Confirm message and send
+  </h1>
+
+<h1 class="heading-medium">
+Subject
+</h1>
+
+Thanks for getting in touch
+
+<h1 class="heading-medium">
+
+Message text
+
+</h1>
+
+<p>The answer to your enquiry can be found on the GOV.UK website - the home of all information for services from the British Government.</p>
+
+<p>Please visit this page on GOV.UK for the answer: </p>
+
+<p><a href="https://www.gov.uk{{link_display}}">{{ title_display }}</a></p>
+
+<p>Thank you.</p>
+
+<p>
+  <a class="button button-start" href="/message-sent" role="button">Send now</a>
+</p>
+
+
+</main>
+
+{% endblock %}
