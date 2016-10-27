@@ -15,7 +15,7 @@
 <h1 class="heading-small">
 Enquiry
 </h1>
-health
+{{enquirytext_display}}
 
 <h1 class="heading-small">
 Country: </h1> Italy
@@ -38,18 +38,18 @@ Country: </h1> Italy
     <tbody>
       <tr>
         <td>
-          {{ results_display[0].title }}
+          {{ results[0].title }}
         </td>
         <td>  
-          {{ results_display[0].description }}<br>
+          {{ results[0].description }}<br>
         </td>
         <td class="change-answer">
-          <a href="https://www.gov.uk{{results_display[0].link}}">
+          <a href="https://www.gov.uk{{results[0].link}}">
             Preview <span class="visuallyhidden">Exporter name</span>
           </a>
         </td>
       <td class="change-answer">
-          <a href="/reply-page?title={{ results_display[0].title }}&link={{results_display[0].link}}">
+          <a href="/reply-page?title={{ results[0].title }}&link={{results[0].link}}">
             Send <span class="visuallyhidden">Exporter name</span>
           </a>
         </td>
@@ -57,18 +57,18 @@ Country: </h1> Italy
       
       <tr>
         <td>
-          {{ results_display[1].title }}
+          {{ results[1].title }}
         </td>
         <td>  
-          {{ results_display[1].description }}<br>
+          {{ results[1].description }}<br>
         </td>
         <td class="change-answer">
-          <a href="https://www.gov.uk{{results_display[1].link}}">
+          <a href="https://www.gov.uk{{results[1].link}}">
             Preview <span class="visuallyhidden">Exporter name</span>
           </a>
         </td>
       <td class="change-answer">
-          <a href="/reply-page?title={{ results_display[1].title }}&link={{results_display[1].link}}">
+          <a href="/reply-page?title={{ results[1].title }}&link={{results[1].link}}">
             Send <span class="visuallyhidden">Exporter name</span>
           </a>
         </td>
@@ -76,18 +76,18 @@ Country: </h1> Italy
 
       <tr>
         <td>
-          {{ results_display[2].title }}
+          {{ results[2].title }}
         </td>
         <td>  
-          {{ results_display[2].description }}<br>
+          {{ results[2].description }}<br>
         </td>
         <td class="change-answer">
-          <a href="https://www.gov.uk{{results_display[2].link}}">
+          <a href="https://www.gov.uk{{results[2].link}}">
             Preview <span class="visuallyhidden">Exporter name</span>
           </a>
         </td>
       <td class="change-answer">
-          <a href="/reply-page?title={{ results_display[2].title }}&link={{results_display[2].link}}">
+          <a href="/reply-page?title={{ results[2].title }}&link={{results[2].link}}">
             Send <span class="visuallyhidden">Exporter name</span>
           </a>
         </td>

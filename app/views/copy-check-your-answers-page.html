@@ -12,15 +12,16 @@
     Finding answers quickly
   </h1>
 
-<h2 class="heading-medium"> Do these answer your enquiry?</h2>
 
-<p><a href="https://www.gov.uk{{results_display[0].link}}">{{ results_display[0].title }}</a></br>
-{{ results_display[0].description }}</p>
-<p><a href="https://www.gov.uk{{results_display[1].link}}">{{ results_display[1].title }}</a></br>
-{{ results_display[1].description }}</p>
-<p><a href="https://www.gov.uk{{results_display[2].link}}">{{ results_display[2].title }}</a></br>
-{{ results_display[2].description }}</p>
-<a href="https://www.gov.uk/search?q={{enquirytext_display}}+{{country_display}}">Find more helpful articles</a>
+<h2 class="heading-medium"> For a quick answer, try these pages first...</h2>
+
+<p><a href="https://www.gov.uk{{results[0].link}}">{{ results[0].title }}</a></br>
+{{ results[0].description }}</p>
+<p><a href="https://www.gov.uk{{results[1].link}}">{{ results[1].title }}</a></br>
+{{ results[1].description }}</p>
+<p><a href="https://www.gov.uk{{results[2].link}}">{{ results[2].title }}</a></br>
+{{ results[2].description }}</p>
+<a href="https://www.gov.uk/search?q={{results}}+{{country_display}}">Find more helpful articles</a>
   <table>
 
     <thead>
@@ -29,13 +30,14 @@
           <h2 class="heading-medium">
             Check your enquiry
           </h2>
+        
+        
         </th>
-        <th>
-        </th>
-      </tr>
+      </tr>   
     </thead>
-
+  
     <tbody>
+      
       <tr>
         <td>
           Name
@@ -92,7 +94,8 @@
   </table>
 
   <h2 class="heading-medium">If the pages above don't answer your enquiry, please send it now</h2>
-
+        <p><a href={{passport_link}}>{{passport}}</a></p>
+        <p><a href={{visa_link}}>{{visa}}</a></p>
   <p class="text">
     By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.
   </p>

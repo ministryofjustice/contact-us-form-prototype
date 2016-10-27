@@ -1,84 +1,90 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
+var keyword_extractor = require('keyword-extractor');
 
 router.get('/', function (req, res) {
   
 var testModule = require("./exportsTest.js");
 var greetingEnglish = testModule.sayHelloInEnglish
 var greetingSpanish = testModule.sayHelloInSpanish
-var apiCall = require("./apicall2.js");
-var link = apiCall.apiResults
-  res.render('index', {'display_english': greetingEnglish, 'display_spanish': greetingSpanish, 'display_link': link});
+
 
 });
-
-
-
-// Making API call to Search API
-
-// Synchronously get the url for the latest release on github and store
-
-
-
 
 // Branching
 
 router.get('/copy-check-your-answers-page',function (req, res){
 
-// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it  
+  var contact_name_display = req.query.contactname
+  var contact_email_display = req.query.contactemail
+  var enquirytext_display = req.query.enquirytext
+  var country_display = req.query.Country
+  var enquiry1 = keyword_extractor.extract(enquirytext_display,{
+    language:'english',
+    remove_digits: true,
+    return_changed_case:true,
+    remove_duplicates: false
+  })
+  var enquiry = enquiry1+'+'+country_display
+  var passport = "But please note, British Embassies can no longer deal with enquiries regarding replacing or renewing a passport. Click here to get, renew or replace a passport."
+  var passport_link = 'https://www.gov.uk/apply-renew-passport'
+  var visa = "But please note, British Embassies can no longer deal with enquiries regarding visas. Please contact UK Visas and Immigration."
+  var visa_link = 'https://www.gov.uk/check-uk-visa'
+  
+console.dir(enquiry)
 
-var contact_name_display = req.query.contactname
-var contact_email_display = req.query.contactemail
-var enquirytext_display = req.query.enquirytext
-var country_display = req.query.Country
-var results_passport = [
-{description: "You can apply for, update, renew or replace a passport online",link: "/apply-renew-passport",title: "Apply for, renew or replace a UK passport"},
-{description: "Apply online to renew your 10-year driving licence, full or provisional - cost, payment methods, documents and information you need",link: "/renew-driving-licence",title: "Renew your driving licence"},
-{description: "Renew or replace a passport urgently with the 1 day Premium service or the 1 week Fast Track service",link: "/get-a-passport-urgently",title: "Get a passport urgently"}
-] 
-var results_health = [
-{description: "Latest travel advice for Italy including safety and security, entry requirements, travel warnings and health",link: "/foreign-travel-advice/italy",title: "Italy travel advice"}, 
-{description: "EU emergency measures against Xylella fastidiosa and current issues related to protecting plant health and trade of plants, fruit, vegetables or plant material.",link: "/guidance/protecting-plant-health-topical-issues",title: "Protecting plant health: topical issues"},
-{description: "Latest travel advice for San Marino including safety and security, entry requirements, travel warnings and health",link: "/foreign-travel-advice/san-marino",title: "San Marino travel advice"}
-]
-var results_lifestyle = [{firstname:"life", lastname:"style"}]
-var health = ["health", "medicine", "medicines", "doctor"]
-var passport = ["passport", "lost", "renew", "Passport"]
-var lifestyle = ["lifestyle", "cost", "sunshine"]
+  request('https://www.gov.uk/api/search.json?q='+enquiry, function(error, response, body){
 
-// var apiCall = require("./apiCall.js")
+    var results = JSON.parse(body).results
 
-  if (country_display == "Italy")
-  if (health.indexOf(enquirytext_display) > -1) {
-  // if (enquirytext_display.includes (health) == true) {
+    //console.dir(results)
 
-    res.render('copy-check-your-answers-page', {'results_display': results_health, 'country_display' : country_display,'contact_name_display' : contact_name_display, 'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display })
-    // redirect to the relevant page
-    // res.redirect('/italy-results');
+if (enquiry.indexOf('passport') > -1) { 
 
-} else if (country_display == "Italy")
-  if (passport.indexOf(enquirytext_display) > -1) {
-  // if (enquirytext_display.includes (health) == true) {
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      passport: passport,
+      passport_link: passport_link
+    }
 
-    res.render('copy-check-your-answers-page', {'results_display': results_passport, 'country_display' : country_display,'contact_name_display' : contact_name_display, 'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display })
-    // redirect to the relevant page
-    // res.redirect('/italy-results');
+}
 
-} else if (country_display == "Italy")
-  if (lifestyle.indexOf(enquirytext_display) > -1) {
-  // if (enquirytext_display.includes (health) == true) {
+else if (enquiry.indexOf('visa') > -1) { 
 
-    res.render('copy-check-your-answers-page', {'results_display': results_lifestyle, 'country_display' : country_display,'contact_name_display' : contact_name_display, 'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display })
-    // redirect to the relevant page
-    // res.redirect('/italy-results');
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      visa: visa,
+      visa_link: visa_link
+    }
 
+}
 
-} else {
+else
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display
+    }
 
-    // if over18 is any other value (or is missing) render the page requested
-    res.render('copy-check-your-answers-page', {'results_display' : contentTitle, 'country_display' : country_display}) 
+  // if (enquirytext_display.includes (passport) == true) {
 
-  }
+console.dir(passport)
+
+    res.render('copy-check-your-answers-page', viewData);
+
+  });
+
 
 });
 
@@ -116,58 +122,30 @@ router.get('/suggested-articles-page',function (req, res){
 
 // get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it  
 
-var contact_name_display = "Name"
-var contact_email_display = "Email Address"
-var enquirytext_display = "Enquiry Text"
-var country_display = "Italy"
-var results_passport = [
-{description: "You can apply for, update, renew or replace a passport online",link: "/apply-renew-passport",title: "Apply for, renew or replace a UK passport"},
-{description: "Apply online to renew your 10-year driving licence, full or provisional - cost, payment methods, documents and information you need",link: "/renew-driving-licence",title: "Renew your driving licence"},
-{description: "Renew or replace a passport urgently with the 1 day Premium service or the 1 week Fast Track service",link: "/get-a-passport-urgently",title: "Get a passport urgently"}
-] 
-var results_health = [
-{description: "Latest travel advice for Italy including safety and security, entry requirements, travel warnings and health",link: "/foreign-travel-advice/italy",title: "Italy travel advice"}, 
-{description: "EU emergency measures against Xylella fastidiosa and current issues related to protecting plant health and trade of plants, fruit, vegetables or plant material.",link: "/guidance/protecting-plant-health-topical-issues",title: "Protecting plant health: topical issues"},
-{description: "Latest travel advice for San Marino including safety and security, entry requirements, travel warnings and health",link: "/foreign-travel-advice/san-marino",title: "San Marino travel advice"}
-]
-var results_lifestyle = [{firstname:"life", lastname:"style"}]
-var health = ["health", "medicine", "medicines", "doctor"]
-var passport = ["passport", "lost", "renew", "Passport"]
-var lifestyle = ["lifestyle", "cost", "sunshine"]
 
-// var apiCall = require("./apiCall.js")
+  var contact_name_display = req.query.contactname
+  var contact_email_display = req.query.contactemail
+  var enquirytext_display = req.query.enquirytext
+  var country_display = req.query.Country
 
-  if (country_display == "Italy")
-  if (health.indexOf(enquirytext_display) > -1) {
-  // if (enquirytext_display.includes (health) == true) {
+  request('https://www.gov.uk/api/search.json?q='+enquirytext_display, function(error, response, body){
 
-    res.render('copy-check-your-answers-page', {'results_display': results_health, 'country_display' : country_display,'contact_name_display' : contact_name_display, 'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display })
-    // redirect to the relevant page
-    // res.redirect('/italy-results');
+    var results = JSON.parse(body).results
 
-} else if (country_display == "Italy")
-  if (passport.indexOf(enquirytext_display) > -1) {
-  // if (enquirytext_display.includes (health) == true) {
+    //console.dir(results)
 
-    res.render('copy-check-your-answers-page', {'results_display': results_passport, 'country_display' : country_display,'contact_name_display' : contact_name_display, 'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display })
-    // redirect to the relevant page
-    // res.redirect('/italy-results');
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display
+    }
 
-} else if (country_display == "Italy")
-  if (lifestyle.indexOf(enquirytext_display) > -1) {
-  // if (enquirytext_display.includes (health) == true) {
+    res.render('suggested-articles-page', viewData);
 
-    res.render('suggested-articles-page', {'results_display': results_lifestyle, 'country_display' : country_display,'contact_name_display' : contact_name_display, 'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display })
-    // redirect to the relevant page
-    // res.redirect('/italy-results');
+  });
 
-
-} else {
-
-    // if over18 is any other value (or is missing) render the page requested
-    res.render('suggested-articles-page', {'results_display': results_health, 'country_display' : country_display,'contact_name_display' : contact_name_display, 'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display }) 
-
-  }
 
 });
 
