@@ -31,6 +31,7 @@ router.get('/copy-check-your-answers-page',function (req, res){
   var passport_link = 'https://www.gov.uk/apply-renew-passport'
   var visa = "But please note, British Embassies can no longer deal with enquiries regarding visas. Please contact UK Visas and Immigration."
   var visa_link = 'https://www.gov.uk/check-uk-visa'
+  var assault = "If you have been assaulted and require assistance from embassy staff, please call us directly."
   
 console.dir(enquiry)
 
@@ -64,6 +65,19 @@ else if (enquiry.indexOf('visa') > -1) {
       country_display: country_display,
       visa: visa,
       visa_link: visa_link
+    }
+
+}
+
+else if (enquiry.indexOf('assault') > -1) { 
+
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      assault: assault 
     }
 
 }
