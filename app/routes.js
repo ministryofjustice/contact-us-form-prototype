@@ -33,13 +33,14 @@ router.get('/copy-check-your-answers-page',function (req, res){
   var visa_link = 'https://www.gov.uk/check-uk-visa'
   var assault = "If you have been assaulted and require assistance from embassy staff, please call us directly."
   
-console.dir(enquiry)
+    console.dir(enquirytext_display)
+    console.dir(enquiry)
 
-  request('https://www.gov.uk/api/search.json?q='+enquiry, function(error, response, body){
+  request('https://www.gov.uk/api/search.json?count=3&q='+enquiry, function(error, response, body){
 
     var results = JSON.parse(body).results
 
-    //console.dir(results)
+    console.dir(results)
 
 if (enquiry.indexOf('passport') > -1) { 
 
@@ -93,7 +94,7 @@ else
 
   // if (enquirytext_display.includes (passport) == true) {
 
-console.dir(passport)
+  // console.dir(passport)
 
     res.render('copy-check-your-answers-page', viewData);
 
