@@ -50,6 +50,7 @@ if (enquiry.indexOf('passport') > -1) {
       enquirytext_display: enquirytext_display,
       contact_email_display: contact_email_display,
       country_display: country_display,
+      enquiry: enquiry,
       passport: passport,
       passport_link: passport_link
     }
@@ -64,6 +65,7 @@ else if (enquiry.indexOf('visa') > -1) {
       enquirytext_display: enquirytext_display,
       contact_email_display: contact_email_display,
       country_display: country_display,
+      enquiry: enquiry,
       visa: visa,
       visa_link: visa_link
     }
@@ -78,6 +80,7 @@ else if (enquiry.indexOf('assault') > -1) {
       enquirytext_display: enquirytext_display,
       contact_email_display: contact_email_display,
       country_display: country_display,
+      enquiry: enquiry,
       assault: assault 
     }
 
@@ -89,7 +92,8 @@ else
       contact_name_display: contact_name_display,
       enquirytext_display: enquirytext_display,
       contact_email_display: contact_email_display,
-      country_display: country_display
+      country_display: country_display,
+      enquiry: enquiry
     }
 
   // if (enquirytext_display.includes (passport) == true) {
