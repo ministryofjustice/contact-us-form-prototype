@@ -143,11 +143,12 @@ router.get('/suggested-articles-page',function (req, res){
   var enquirytext_display = req.query.enquirytext
   var country_display = req.query.Country
 
-  request('https://www.gov.uk/api/search.json?q='+enquirytext_display, function(error, response, body){
+  request('https://www.gov.uk/api/search.json?count=5&q='+enquirytext_display, function(error, response, body){
 
     var results = JSON.parse(body).results
 
-    //console.dir(results)
+    console.dir(enquirytext_display)
+    console.dir(results)
 
     var viewData = {
       results: results,
