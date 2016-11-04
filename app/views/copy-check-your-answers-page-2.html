@@ -22,7 +22,8 @@
 <p><a href="https://www.gov.uk{{results[2].link}}">{{ results[2].title }}</a></br>
 {{ results[2].description }}</p>
 <a href="https://www.gov.uk/search?q={{enquiry}}">Find more helpful articles</a>
-  <table>
+
+  <table class="visuallyhidden">
 
     <thead>
       <tr>
@@ -92,75 +93,81 @@
       </tr>
     </tbody>
   </table>
+<p></p>  
 
-  <h2 class="heading-medium">If the pages above don't answer your enquiry, please send it now</h2>
+<form action="/confirmation-page-2" method="get" class="form">
+
+  <fieldset id="radio-enquiry-answer">
+
+    <legend class="heading-medium">
+        Do these answer your enquiry?
+    </legend>
+
+    <label class="block-label" for="radio-home-address" >
+         <input id="radio-home-address" type="radio" name="radio-indent-group" value="Yes">
+            Yes
+    </label>
+
+    <label class="block-label" for="radio-other-address" data-target="contact-details">
+         <input id="radio-other-address" type="radio" name="radio-indent-group" value="No">
+            No
+    </label>
+
+  </fieldset>            
+
+  <fieldset class="visuallyhidden" id="enquiry">
+      
+    <label for="country">Country</label>
+      <input name="country" id="country" type="text" class="full-name" value="{{country_display}}" >
+      
+    <label for="textdetails">Enquiry</label>
+      <input name="enquirytext" class="visuallyhidden" id="textdetails" required aria-required="true" value="{{enquirytext_display}}" >
+         
+  </fieldset>
+
+<!-- Contact Details -->
+  <div class="panel panel-border-narrow js-hidden" id="contact-details">
+ 
+    <legend class="heading-medium">Submit your enquiry and we will try to answer</legend>
         <p><a href={{passport_link}}>{{passport}}</a></p>
         <p><a href={{visa_link}}>{{visa}}</a></p>
         <p>{{assault}}</p>
-  <p>
-    By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.
-  </p>
-
-<form action="/confirmation-page" method="get" class="form">
-
- <fieldset class="visuallyhidden">
-      <legend class="visuallyhidden">Your Enquiry</legend>
-      <div class="group">
-          <p class="visuallyhidden">Don't include personal or financial information, eg your National Insurance number or credit card details.</p>
-
-
-        <label for="textdetails" class="visuallyhidden">Detail</label>
-        <input name="enquirytext" class="visuallyhidden" id="textdetails" required aria-required="true" value="{{enquirytext_display}}">
-          
-        
-
-
-        <p id="textdetailscounter" class="visuallyhidden" aria-live="polite" aria-atomic="false">(Limit is 1200 characters)</p>
-      </div>
-    </fieldset>
-
-<!-- Contact Details -->
-  <fieldset id="contact-details" class="visuallyhidden">
-      <legend class="heading-medium">Do you want a reply?</legend>
-      <p>If you'd like us to get back to you, please leave your details below.</p>
-
-        <p class="group">
-
-        <label for="name">Your name</label>
-        <input name="contactname" id="name" type="text" class="full-name" value="{{contact_name_display}}">
-      </p>
-
-        <p class="group">
-
-        <label for="email">Your email address</label>
-        <input name="contactemail" id="email" type="email" class="email" value={{contact_email_display}}>
-
-      </p>
+      
+    <fieldset id="contact_details">
+      
       <p class="group">
-
         <label for="name">Your name</label>
-        <input name="country_display" id="name" type="text" class="full-name" value="{{country_display}}">
+        <input name="contactname" id="name" type="text" class="full-name" value={{ contact_name_display }}>
+      
+      </p>
+      <p>
+      
+        <label for="email">Your email address</label>
+        <input name="contactemail" id="email" type="email" class="email" value={{ contact_email_display }}>
+
       </p>
 
     </fieldset>
 
-
-    <div class="visuallyhidden">
-      <details>
+    <p>
+    <details>
         <summary><span class="summary">We'll use the information you provide to answer your enquiry and improve our service</span></summary>
         <div class="panel panel-border-narrow">
           <p>
             The Foreign and Commonwealth Office will use the information you provide to answer your enquiry. We may also use it to improve the service we offer to other people by analysing common questions and updating the content available on GOV.UK.
           </p>
-          </div>
-      </details>
-    </div>
-
+        </div>
+    </details>
+    </p>
+    
     <div class="form-group">
       <input type="submit" class="button" value="Send now">
     </div>
 
-  </form>
+  </div>
+
+  
+</form>
 
 </main>
 
