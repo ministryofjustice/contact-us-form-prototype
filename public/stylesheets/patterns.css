@@ -1,4 +1,4 @@
-/* line 3, /Users/dtumacbook/Documents/Github/contact-us-form-prototype/app/assets/sass/patterns/check-your-answers.scss */
+/* line 3, C:/Github/contact-us-form-prototype/app/assets/sass/patterns/check-your-answers.scss */
 .check-your-answers td {
   font-family: "nta", Arial, sans-serif;
   font-weight: 400;
@@ -9,14 +9,14 @@
 }
 
 @media (min-width: 641px) {
-  /* line 3, /Users/dtumacbook/Documents/Github/contact-us-form-prototype/app/assets/sass/patterns/check-your-answers.scss */
+  /* line 3, C:/Github/contact-us-form-prototype/app/assets/sass/patterns/check-your-answers.scss */
   .check-your-answers td {
     font-size: 19px;
     line-height: 1.3157894737;
   }
 }
 
-/* line 8, /Users/dtumacbook/Documents/Github/contact-us-form-prototype/app/assets/sass/patterns/check-your-answers.scss */
+/* line 8, C:/Github/contact-us-form-prototype/app/assets/sass/patterns/check-your-answers.scss */
 .check-your-answers .change-answer {
   text-align: right;
   font-weight: bold;
