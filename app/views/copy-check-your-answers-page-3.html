@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Check your answers
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <h1 class="heading-large">
+    Finding answers quickly
+  </h1>
+
+
+<h2 class="heading-medium"> For a quick answer, try these pages first...</h2>
+
+
+<li><a href="https://www.gov.uk{{results[0].link}}">{{ results[0].title }}</a>
+</li>
+<li><a href="https://www.gov.uk{{results[1].link}}">{{ results[1].title }}</a>
+</li>
+<li><a href="https://www.gov.uk{{results[2].link}}">{{ results[2].title }}</a>
+</li>
+<p><a href="https://www.gov.uk/search?q={{enquiry}}">Find more helpful articles</a></p>
+
+  <table class="visuallyhidden">
+
+    <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            Check your enquiry
+          </h2>
+        
+        
+        </th>
+      </tr>   
+    </thead>
+  
+
+<p></p>  
+
+<form action="/confirmation-page-3" method="get" class="form">
+
+  <fieldset id="radio-enquiry-answer">
+
+    <legend class="heading-medium">
+        Do these answer your enquiry?
+    </legend>
+
+    <label class="block-label" for="radio-home-address" data-target="great">
+         <input id="radio-home-address" type="radio" name="radio-indent-group" value="Yes">
+            Yes
+    </label>
+<div class="panel panel-border-narrow js-hidden" id="great">
+<p>We're glad you found what you needed. If you have any feedback, please go to {we'll put a survey address in here for the live version}.</p>
+</div>
+
+
+    <label class="block-label" for="radio-other-address" data-target="contact-details">
+         <input id="radio-other-address" type="radio" name="radio-indent-group" value="No">
+            No
+    </label>
+
+  </fieldset>            
+
+  
+
+<!-- Contact Details -->
+  <div class="panel panel-border-narrow js-hidden" id="contact-details">
+ 
+    <legend class="heading-medium">Submit your enquiry and we will try to answer</legend>
+        <p><a href={{passport_link}}>{{passport}}</a></p>
+        <p><a href={{visa_link}}>{{visa}}</a></p>
+        <p>{{assault}}</p>
+      
+    <fieldset id="contact_details">
+      
+      <p class="group">
+        <label for="name">Your name</label>
+        <input name="contactname" id="name" type="text" class="form-control-1-3 full-name" value={{ contact_name_display }}>
+      
+      </p>
+      <p>
+      
+        <label for="email">Your email address</label>
+        <input name="contactemail" id="email" type="email" class="form-control-1-3 email" value={{ contact_email_display }}>
+
+      </p>
+    </fieldset>
+<p></p>
+    <fieldset id="enquiry">
+      <p>
+      <label for="country">Country</label>
+        <input name="country" id="country" type="text" class="full-name" value="{{country_display}}" >
+      </p>
+      <p>
+      <label for="textdetails">Enquiry</label>
+        <textarea name="enquirytext" class="form-control-2-3 counted" id="textdetails" required aria-required="true" >{{enquirytext_display}}</textarea>
+      </p>   
+    </fieldset>
+
+    <p>
+    <details>
+        <summary><span class="summary">We'll use the information you provide to answer your enquiry and improve our service</span></summary>
+        <div class="panel panel-border-narrow">
+          <p>
+            The Foreign and Commonwealth Office will use the information you provide to answer your enquiry. We may also use it to improve the service we offer to other people by analysing common questions and updating the content available on GOV.UK.
+          </p>
+        </div>
+    </details>
+    </p>
+   
+    <div class="form-group">
+      <input type="submit" class="button" value="Send now">
+    </div>
+
+  </div>
+
+  
+</form>
+ <p></p>
+</main>
+
+{% endblock %}

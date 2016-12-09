@@ -202,6 +202,101 @@ else
 
 });
 
+// Route for Check your answers page 3
+
+router.get('/copy-check-your-answers-page-3',function (req, res){
+
+  var contact_name_display = req.query.contactname
+  var contact_email_display = req.query.contactemail
+  var enquirytext_display = req.query.enquirytext
+  var country_display = req.query.Country
+  var enquiry1 = keyword_extractor.extract(enquirytext_display,{
+    language:'english',
+    remove_digits: true,
+    return_changed_case:true,
+    remove_duplicates: false
+  })
+  var enquiry = enquiry1+'+'+country_display
+  var passport = "But please note, British Embassies can no longer deal with enquiries regarding replacing or renewing a passport. Click here to get, renew or replace a passport."
+  var passport_link = 'https://www.gov.uk/apply-renew-passport'
+  var visa = "But please note, British Embassies can no longer deal with enquiries regarding visas. Please contact UK Visas and Immigration."
+  var visa_link = 'https://www.gov.uk/check-uk-visa'
+  var assault = "If you have been assaulted and require assistance from embassy staff, please call us directly."
+  
+    console.dir(enquirytext_display)
+    console.dir(enquiry)
+
+  request('https://www.gov.uk/api/search.json?count=3&q='+enquiry, function(error, response, body){
+
+    var results = JSON.parse(body).results
+
+    console.dir(results)
+
+if (enquiry.indexOf('passport') > -1) { 
+
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      enquiry: enquiry,
+      passport: passport,
+      passport_link: passport_link
+    }
+
+}
+
+else if (enquiry.indexOf('visa') > -1) { 
+
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      enquiry: enquiry,
+      visa: visa,
+      visa_link: visa_link
+    }
+
+}
+
+else if (enquiry.indexOf('assault') > -1) { 
+
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      enquiry: enquiry,
+      assault: assault 
+    }
+
+}
+
+else
+    var viewData = {
+      results: results,
+      contact_name_display: contact_name_display,
+      enquirytext_display: enquirytext_display,
+      contact_email_display: contact_email_display,
+      country_display: country_display,
+      enquiry: enquiry
+    }
+
+  // if (enquirytext_display.includes (passport) == true) {
+
+  // console.dir(passport)
+
+    res.render('copy-check-your-answers-page-3', viewData);
+
+  });
+
+
+});
+
 
 // Route for confirmation page
 
@@ -233,6 +328,24 @@ console.dir(enquirytext_display)
 res.render('confirmation-page-2', {'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display, "country_display" : country_display }) 
 
 });
+
+// Route for confirmation page 3
+
+router.get('/confirmation-page-3',function (req, res){
+
+// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it  
+
+var contact_email_display = req.query.contactemail
+var enquirytext_display = req.query.enquirytext
+var country_display = req.query.country
+
+console.dir(req.query.enquirytext)
+console.dir(enquirytext_display)
+
+res.render('confirmation-page-3', {'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display, "country_display" : country_display }) 
+
+});
+
 
 // Passing data into a page, dynamic version
 // this is going from fullname (input name in form_post_data) -> fullname_form (captured as variable here) -> fullname_display (the variable in form_show_data html source)
