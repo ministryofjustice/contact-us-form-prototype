@@ -312,7 +312,7 @@ res.render('confirmation-page', {'contact_email_display' : contact_email_display
 
 });
 
-// Route for confirmation page
+// Route for confirmation page 2
 
 router.get('/confirmation-page-2',function (req, res){
 
