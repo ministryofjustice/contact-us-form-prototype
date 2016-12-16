@@ -11,9 +11,39 @@
   <h1 class="heading-large">
     Finding answers quickly
   </h1>
+ <table>
 
-<p>Enquiry subject: {{enquirytext_display}}<br>
-Country: {{country_display}}</p>
+    <thead>
+      <tr>
+        <th colspan="2">
+          <h2 class="heading-medium">
+            Your enquiry
+          </h2>
+        
+        
+        </th>
+      </tr>   
+    </thead>
+  
+    <tbody>
+      <tr>
+        <td>
+          Your enquiry
+        </td>
+        <td>
+          {{ enquirytext_display }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Your country
+        </td>
+        <td>
+          {{ country_display }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 <h2 class="heading-medium"> From what you've told us, we think these pages might help</h2>
 
@@ -26,22 +56,6 @@ Country: {{country_display}}</p>
 </li>
 <p><a href="https://www.gov.uk/search?q={{enquiry}}">More results...</a></p>
 
-  <table class="visuallyhidden">
-
-    <thead>
-      <tr>
-        <th colspan="2">
-          <h2 class="heading-medium">
-            Check your enquiry
-          </h2>
-        
-        
-        </th>
-      </tr>   
-    </thead>
-  
-
-<p></p>  
 
 <form action="/confirmation-page-3" method="get" class="form">
 
@@ -113,10 +127,11 @@ Country: {{country_display}}</p>
         </div>
     </details>
     </p>
-   
-    <div class="form-group">
+  </div>
+<br>
+  <div class="form-group">
       <input type="submit" class="button" value="Send now">
-    </div>
+  </div>
 
   </div>
 
