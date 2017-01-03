@@ -14,6 +14,13 @@ var greetingSpanish = testModule.sayHelloInSpanish
 
 // Branching
 
+router.get('/copy-forms',function (req, res){
+
+res.redirect('copy-forms-4')
+
+});
+
+
 router.get('/copy-check-your-answers-page',function (req, res){
 
   var contact_name_display = req.query.contactname
