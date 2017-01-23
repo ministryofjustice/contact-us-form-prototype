@@ -5,10 +5,7 @@ var keyword_extractor = require('keyword-extractor');
 
 router.get('/', function (req, res) {
   
-var testModule = require("./exportsTest.js");
-var greetingEnglish = testModule.sayHelloInEnglish
-var greetingSpanish = testModule.sayHelloInSpanish
-
+res.redirect('copy-forms-4')  
 
 });
 
