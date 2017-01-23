@@ -111,13 +111,35 @@
       <label for="textdetails">Enquiry</label>
         <textarea name="enquirytext" class="form-control-2-3 counted" id="textdetails" required aria-required="true" >{{enquirytext_display}}</textarea>
       </p>
-     
+      <p>
+        <input name="TAPE" id="TAPE" type="checkbox" value="Travel Advice">I'm looking for advice on travelling to this country</p>  
       <p>
       <label for="country">Country</label>
         <input name="country" id="country" type="text" class="full-name" value="{{country_display}}" >
       </p> 
       <p>
-        <input name="TAPE" id="TAPE" type="checkbox" value="Travel Advice">I'm looking for advice on travelling to this country</p>  
+      <details>
+        <summary><span class="summary">Click if you want to submit your enquiry to a particular Embassy</span></summary>
+          <div class="panel panel-border-narrow"> 
+          <label class="block-label" for="radio-home-post">
+            <input id="radio-home-post" type="radio" name="radio-indent-group" value="Madrid">
+            Madrid
+          </label>
+          <label class="block-label" for="radio-home-post">
+            <input id="radio-home-post" type="radio" name="radio-indent-group" value="Malaga">
+            Malaga
+          </label>
+          <label class="block-label" for="radio-home-post">
+            <input id="radio-home-post" type="radio" name="radio-indent-group" value="Barcelona">
+            Barcelona
+          </label>
+          <label class="block-label" for="radio-home-post">
+            <input id="radio-home-post" type="radio" name="radio-indent-group" value="Other">
+            Other
+          </label>
+          </div>
+      </details>
+      </p>
 
       
     </fieldset>
