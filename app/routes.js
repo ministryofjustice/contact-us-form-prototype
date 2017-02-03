@@ -4,8 +4,8 @@ var request = require('request');
 var keyword_extractor = require('keyword-extractor');
 
 router.get('/', function (req, res) {
-  
-res.redirect('index')  
+
+res.redirect('index')
 
 });
 
@@ -30,13 +30,13 @@ router.get('/results-form',function (req, res){
     return_changed_case:true,
     remove_duplicates: false
   })
-  var enquiry = enquiry1+'+'+country_display
+  var enquiry = enquiry1
   var passport = "But please note, British Embassies can no longer deal with enquiries regarding replacing or renewing a passport. Click here to get, renew or replace a passport."
   var passport_link = 'https://www.gov.uk/apply-renew-passport'
   var visa = "But please note, British Embassies can no longer deal with enquiries regarding visas. Please contact UK Visas and Immigration."
   var visa_link = 'https://www.gov.uk/check-uk-visa'
   var assault = "If you have been assaulted and require assistance from embassy staff, please call us directly."
-  
+
     console.dir(enquirytext_display)
     console.dir(enquiry)
 
@@ -46,7 +46,7 @@ router.get('/results-form',function (req, res){
 
     console.dir(results)
 
-if (enquiry.indexOf('passport') > -1) { 
+if (enquiry.indexOf('passport') > -1) {
 
     var viewData = {
       results: results,
@@ -61,7 +61,7 @@ if (enquiry.indexOf('passport') > -1) {
 
 }
 
-else if (enquiry.indexOf('visa') > -1) { 
+else if (enquiry.indexOf('visa') > -1) {
 
     var viewData = {
       results: results,
@@ -76,7 +76,7 @@ else if (enquiry.indexOf('visa') > -1) {
 
 }
 
-else if (enquiry.indexOf('assault') > -1) { 
+else if (enquiry.indexOf('assault') > -1) {
 
     var viewData = {
       results: results,
@@ -85,7 +85,7 @@ else if (enquiry.indexOf('assault') > -1) {
       contact_email_display: contact_email_display,
       country_display: country_display,
       enquiry: enquiry,
-      assault: assault 
+      assault: assault
     }
 
 }
@@ -116,7 +116,7 @@ else
 
 router.get('/confirmation',function (req, res){
 
-// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it  
+// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it
 
 var contact_email_display = req.query.contactemail
 var enquirytext_display = req.query.enquirytext
@@ -125,7 +125,7 @@ var country_display = req.query.country
 console.dir(req.query.enquirytext)
 console.dir(enquirytext_display)
 
-res.render('confirmation', {'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display, "country_display" : country_display }) 
+res.render('confirmation', {'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display, "country_display" : country_display })
 
 });
 
@@ -134,7 +134,7 @@ res.render('confirmation', {'contact_email_display' : contact_email_display, 'en
 // this is going from fullname (input name in form_post_data) -> fullname_form (captured as variable here) -> fullname_display (the variable in form_show_data html source)
 // router.get('/copy-check-your-answers-page',function (req, res){
 
-// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it  
+// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it
 
 // var contact_name_display = req.query.contactname
 // var contact_email_display = req.query.contactemail
@@ -143,13 +143,13 @@ res.render('confirmation', {'contact_email_display' : contact_email_display, 'en
 
 // now send that variable to the page which has variable tags for fullname_display etc
 
-// res.render('copy-check-your-answers-page', {'country_display' : country_display,'contact_name_display' : contact_name_display, 'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display }) 
+// res.render('copy-check-your-answers-page', {'country_display' : country_display,'contact_name_display' : contact_name_display, 'contact_email_display' : contact_email_display, 'enquirytext_display' : enquirytext_display })
 
 // })
 
 router.get('/suggested-articles-page',function (req, res){
 
-// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it  
+// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it
 
 
   var contact_name_display = req.query.contactname
@@ -181,7 +181,7 @@ router.get('/suggested-articles-page',function (req, res){
 
 router.get('/reply-page',function (req, res){
 
-// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it  
+// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it
 
 var title_display = req.query.title
 var link_display = req.query.link
@@ -190,13 +190,13 @@ var country_display = req.query.Country
 
 res.render('reply-page', {'title_display': title_display, 'link_display' : link_display})
 
-  
+
 
 });
 
 router.get('/reply-page2',function (req, res){
 
-// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it  
+// get the answer from the query string (?fullnamename=john) and set it as a variable so you can use it
 
 var title_display = req.query.title
 var link_display = req.query.link
@@ -205,7 +205,7 @@ var country_display = req.query.Country
 
 res.render('reply-page2', {'replytext_display': replytext_display, 'link_display' : link_display})
 
-  
+
 
 });
 
