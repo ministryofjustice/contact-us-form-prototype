@@ -5,7 +5,7 @@ var keyword_extractor = require('keyword-extractor');
 
 router.get('/', function (req, res) {
   
-res.redirect('copy-forms-4')  
+res.redirect('index')  
 
 });
 
