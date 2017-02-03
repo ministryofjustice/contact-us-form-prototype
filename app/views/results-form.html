@@ -7,19 +7,11 @@
 {% block content %}
 
 <main id="content" role="main">
-
   <div class="grid-row">
-
     <div class="column-full">
 
-      <h1 class="heading-xlarge">
-      Contact the Ministry of Justice
-      </h1>
-
-      <h2 class="heading-medium">
-      Your enquiry
-      </h2>
-
+      <h1 class="heading-xlarge">Contact the Ministry of Justice</h1>
+      <h2 class="heading-medium">Your enquiry is about</h2>
       <table>
         <tr style="border-top:1px solid #BFC1C3;">
           <td>{{ enquirytext_display }}</td>
@@ -27,46 +19,38 @@
       </table>
 
       <h2 class="heading-medium">We would like to suggest these pages</h2>
-
       <ul>
         <li><a href="https://www.gov.uk{{results[0].link}}">{{ results[0].title }}</a></li>
         <li><a href="https://www.gov.uk{{results[1].link}}">{{ results[1].title }}</a></li>
         <li><a href="https://www.gov.uk{{results[2].link}}">{{ results[2].title }}</a></li>
       </ul>
-      
       <br>
-      
       <p><a href="https://www.gov.uk/search?q={{enquiry}}">More results...</a></p>
-      
       <br>
 
       <form action="/confirmation" method="get" class="form">
-
         <fieldset id="radio-enquiry-answer">
 
-          <legend class="heading-medium">
-            Has this answered your enquiry?
-          </legend>
+          <legend class="heading-medium">Has this answered your enquiry?</legend>
 
           <label class="block-label selection-button-radio" for="radio-home-address" data-target="great">
             <input id="radio-home-address" type="radio" name="radio-indent-group" value="Yes">Yes
           </label>
           
-          <div class="panel panel-border-narrow js-hidden" id="great">
-            <p>We're glad you found what you needed. We welcome your <a href="#">feedback</a>.</p>
-          </div>
 
           <label class="block-label selection-button-radio" for="radio-other-address" data-target="contact-details">
             <input id="radio-other-address" type="radio" name="radio-indent-group" value="No">No, I would like to submit my enquiry
           </label>
-<br>
-        <div class="panel panel-border-narrow js-hidden" id="contact-details">
+
+          <div class="form-group">
+            <div class="panel panel-border-narrow js-hidden" id="great">
+              <p>We're glad you found what you needed. We welcome your <a href="#">feedback</a>.</p>
+            </div>
+
+            <div class="panel panel-border-narrow js-hidden" id="contact-details">
         
-          <legend class="heading-medium">Submit your enquiry</legend>
+              <p class="heading-medium">Submit your enquiry</p>
 
-
-            <fieldset id="contact_details">
-              
               <div class="form-group">
                 <label class="form-label-bold" for="name">Full name</label>
                 <input name="contactname" id="name" type="text" class="form-control" value={{ contact_name_display }}>
@@ -84,27 +68,18 @@
                 <textarea name="enquirytext" rows="8" class="form-control" id="textdetails" required aria-required="true" style="width:100%;">{{enquirytext_display}}</textarea>
               </div>
 
-              <br>
-
-            </fieldset>
-
+              <div class="form-group">
+                <input type="submit" class="button" value="Send now">
+               </div>
+            
             </div>
+          </div>
 
-            </fieldset>
-
-
-            <div class="form-group">
-              <input type="submit" class="button" value="Send now">
-            </div>
-
-        </div><!--END HIDDEN ENQUIRY-->
-
+        </fieldset>
       </form>
 
     </div>
-
   </div>
-
 </main>
 
 {% endblock %}
