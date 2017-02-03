@@ -1,36 +1,55 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+  Contact the Ministry of Justice
 {% endblock %}
 
 {% block content %}
 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
 <main id="content" role="main">
-  <div class="grid-row">
-    <div class="column-two-thirds">
 
-      <h1 class="heading-xlarge">FCO Contact Us form prototype</h1>
+<div class="grid-row">
 
-<p>
-        <a class="button button-start" href="/copy-forms" role="button">Customer View</a>
-      </p>
-The page will now accept any enquiry you type and return the top three GOV.UK search results when you click through to the next page. 
-<p>
-        <a class="button button-start" href="/copy-forms-2" role="button">Customer View 2</a>
-      </p>As View 1, but the journey is broken into two stages, first submitting the enquiry, second asking for confirmation of whether it is correct or not, and then providing submission details.
+<form action="/results-form" method="get" class="form">
 
-<p>
-        <a class="button button-start" href="/suggested-articles-page?enquirytext=how+do+I+get+a+new+passport" role="button">Staff View</a>
-      </p>
-The Staff View prototype is supposed to provide an example of an integrated GOV.UK search-based reply workflow. 
+	<div class="column-full">
+	  
+	    <h1 class="form-title heading-xlarge">
+	      Contact the Ministry of Justice
+	    </h1>
+
+	</div>
+
+	<div class="column-two-thirds">
+	
+	<div class="form-group">
+		<p>Before your enquiry is submitted, we will suggest some articles on GOV.UK that may resolve your query faster.</p>
+	</div>
+
+	</div>
+
+	<div class="column-full">
+
+		<div class="form-group">
+            <label class="heading-medium" for="textdetails">What is your enquiry about?
+            	<span class="form-hint">Give a brief summary and we'll suggest some pages on GOV.UK </span>
+            </label>
+            <input name="enquirytext" id="textdetails" type="text" class="form-control" required aria-required="true">
+        </div>
+
+	    <div class="form-group">
+	      <input type="submit" class="button" value="Continue">
+	    </div>
+
+	</div>
+
+  </form>
+
+</div>
 
 
-      
-    </div>
-  </div>
 </main>
 
 {% endblock %}
-
-
