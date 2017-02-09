@@ -33,10 +33,10 @@
       <form action="/confirmation" method="get" class="form">
         <fieldset id="radio-enquiry-answer">
 
-          <legend class="heading-medium">Do you still need to contact Ministry of Justice?</legend>
+          <legend class="heading-medium">Do you still need to contact the Ministry of Justice?</legend>
 
           <label class="block-label selection-button-radio" for="radio-home-address" data-target="contact">
-            <input id="radio-home-address" type="radio" name="radio-indent-group" value="Yes">Yes, I would still like to contact the Ministry of Justice
+            <input id="radio-home-address" type="radio" name="radio-indent-group" value="Yes">Yes
           </label>
           
 
@@ -64,8 +64,11 @@
               </div>
 
               <div class="form-group">
-                <label for="textdetails" class="form-label-bold">Your message</label>
+                <label for="textdetails" class="form-label-bold">Your message
+                <span class="form-hint">To ensure you get a response, focus on what you want to know and keep your message short and simple</span>
+                </label>
                 <textarea name="enquirytext" rows="8" class="form-control" id="textdetails" required aria-required="true" style="width:100%;">{{enquirytext_display}}</textarea>
+                (1200 characters)
               </div>
 
               <div class="form-group">
