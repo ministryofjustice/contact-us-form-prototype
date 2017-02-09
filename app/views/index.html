@@ -1,43 +1,71 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  Contact the Ministry of Justice
+  Start page example
+{% endblock %}
+
+{% block proposition_header %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block header_class %}
+  <!-- blank to remove the proposition header -->
 {% endblock %}
 
 {% block content %}
 
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
 <main id="content" role="main">
 
-<div class="grid-row">
+ 	<h1 class="heading-xlarge">
+        {% if serviceName %} {{ serviceName }} {% endif %}
+      </h1>
 
-<form action="/results-form" method="get" class="form">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+   
+      <p class="lede">Use this service to send a message to the Ministry of Justice.</p>
 
-	<div class="column-full">
-	  
-	    <h1 class="form-title heading-xlarge">
-	      Contact the Ministry of Justice
-	    </h1>
+     <!-- <p>The Ministry of Justice received <strong>400</strong> messages in the last week.</p>-->
+ 
 
+      <p>We aim to respond within 1 week, but allow up to 4 weeks for a reply.</p>
+      <br>
+     
 
-		<div class="form-group">
-            <label class="heading-medium" for="textdetails">What is your enquiry about?
-            	<span class="form-hint">Give a brief summary and we'll suggest some pages on GOV.UK </span>
-            </label>
-            <input name="enquirytext" id="textdetails" type="text" class="form-control" required aria-required="true">
-        </div>
+      <p>
+        <a class="button button-get-started" href="summary" role="button">Start now</a>
+      </p>
 
-	    <div class="form-group">
-	      <input type="submit" class="button" value="Continue">
-	    </div>
+      <h2 class="heading-medium">We don’t reply to messages that:</h2>
 
-	</div>
+	    <ul class="list-bullet">
+	    	<li>contain offensive language or material</li>
+	    	<li>chasing existing enquiries</li>
+	    	<li>have already been answered</li>
+	    	<li>ask for legal advice</li>
+	    	<li>are selling or promoting a product</li>
+	    	<li>are in languages other than English or Welsh
+	    	<li>can't be understood</li>
+	    </ul>
 
-  </form>
+    </div>
 
-</div>
+    <div class="column-third">
 
+      <aside class="govuk-related-items" role="complementary">
+        <h2 class="heading-medium" id="subsection-title">Other services</h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="font-xsmall">
+            <li><a href="https://www.gov.uk/find-court-tribunal">Find a court or tribunal</a></li>
+            <li><a href="https://www.gov.uk/find-prison">Find a prison</a></li> 
+            <li><a href="https://www.gov.uk/staying-in-touch-with-someone-in-prison/visiting-someone-in-prison">Visiting someone in prison</a></li> 
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  
+  </div>
 
 </main>
 
